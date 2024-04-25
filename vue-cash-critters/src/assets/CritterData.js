@@ -7,7 +7,7 @@ class Critter {
         this.id = id;
 
         // avatar
-        const avatarSrc = "src/img/critters/" + nameConst;
+        const avatarSrc = "/img/critters/" + nameConst;
         this.full = avatarSrc + "_FULL.png";
         this.hungry = avatarSrc + "_HUNGRY.png";
         this.starving = avatarSrc + "_STARVING.png";
