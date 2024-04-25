@@ -1,21 +1,27 @@
 class Critter {
-    constructor(name, displayName, id, full, hungry, starving, irate, becomeHungry, becomeStarving, becomeIrate) {
+    constructor(name, displayName, nameConst, id, becomeHungry, becomeStarving, becomeIrate) {
 
+        // id
         this.name = name;
         this.displayName = displayName;
         this.id = id;
-        this.full = full;
-        this.hungry = hungry;
-        this.starving = starving;
-        this.irate = irate;
+
+        // avatar
+        const avatarSrc = "src/img/critters/" + nameConst;
+        this.full = avatarSrc + "_FULL.png";
+        this.hungry = avatarSrc + "_HUNGRY.png";
+        this.starving = avatarSrc + "_STARVING.png";
+        this.irate = avatarSrc + "_IRATE.png";
+        this.avatar = this.full;
+
+        // modifiers
         this.becomeHungry = becomeHungry;
         this.becomeStarving = becomeStarving;
         this.becomeIrate = becomeIrate;
 
+        // stats
         this.hunger = 0;
         this.happiness = 100;
-        this.avatar = this.full;
-
     }
     tick() {
         this.hunger += 2;
@@ -37,19 +43,9 @@ class Critter {
 
 export default {
     CritterList: [
-        new Critter(
-            "HungryHarry", "Hungry Harry", 0, "src/img/critters/HUNGRY_HARRY.png", "src/img/critters/HUNGRY_HARRY_HUNGRY.png", 
-            "src/img/critters/HUNGRY_HARRY_STARVING.png", "src/img/critters/HUNGRY_HARRY_IRATE.png",
-            6, 60, 100),
-        new Critter("MunchyMo", "Munchy Mo", 1, "src/img/critters/MUNCHY_MO_FULL.png", "src/img/critters/MUNCHY_MO_HUNGRY.png", 
-            "src/img/critters/MUNCHY_MO_STARVING.png", "src/img/critters/MUNCHY_MO_IRATE.png", 
-            30, 70, 100),
-        new Critter("Insatiable Ivan"),
-        new Critter("Frank Famished"),
-        new Critter("Ravenous Rachel"),
-        new Critter("Sarah, from Accounts Receivable"),
-        new Critter("Tummy Timmy"),
-        new Critter("Money Mike"),
+        new Critter("HungryHarry", "Hungry Harry", "HUNGRY_HARRY", 0, 6, 60, 100),
+        new Critter("MunchyMo", "Munchy Mo", "MUNCHY_MO", 1, 30, 70, 100),
+        new Critter("Dunder", "Dunder", "DUNDER", 2, 10 , 40, 100),    
         ],
     Feed(critter) {
         critter.avatar = critter.full;
