@@ -6,24 +6,27 @@
       </div>
 
       <div>
-        {{ critterModel.name }}
+        {{ critter.displayName }}
       </div>
 
       <div>
-        <img :src="critterModel.avatar" />
+        <img :src="critter.avatar" />
       </div>
       
       <div>
-        <p>Hunger: {{ critterModel.hunger }}</p>
+        <p>Hunger: {{ critter.hunger }}</p>
       </div>
       
       <div>
-        <p>Happiness: {{ critterModel.happiness }}</p>
+        <p>Happiness: {{ critter.happiness }}</p>
       </div>
         <!-- v-for decoration and critter goes here, use css.grid? -->
       
       <div>
-        <button v-on:click="feed()">Feed</button>
+        <button v-if="isActive" v-on:click="feed()">Feed</button>
+      </div>
+      <div>
+        <button v-if="isAdopt" v-on:click="adopt()">Adopt</button>
       </div>
   
     </div>
@@ -31,20 +34,18 @@
 
 <script>
 export default {
-    props: ['critter', 'i'],
+    props: ['critter', 'isActive', 'isAdopt'],
     data() {
       return {
         critterModel: ""
         }
     },
-    created() {
-      this.critterModel = this.$store.state.critters.find((obj) => {
-          return this.critter.name == obj.name;
-      });
-    },
     methods: {
       feed() {
         this.$store.commit("FEED_CRITTER", this.critter);
+      },
+      adopt() {
+        this.$store.commit("ADD_CRITTER", this.critter);
       }
     }
 }

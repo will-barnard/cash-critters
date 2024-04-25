@@ -1,20 +1,18 @@
 <template>
-  <!-- <header>
+  <header v-if="$store.state.isBegin">
     <div class="wrapper">
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/critters">Critters</RouterLink>
       </nav>
     </div>
-  </header> -->
+  </header>
   <div>
   </div>
   <RouterView />
 </template>
 
 <script setup>
-import { RouterView } from 'vue-router'
-
+import { RouterLink, RouterView } from 'vue-router'
 
 </script>
 

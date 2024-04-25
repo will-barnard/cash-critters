@@ -4,31 +4,40 @@ import { createStore as _createStore } from 'vuex';
 export function createStore() {
   let store = _createStore({
     state: {
-      critters: [],
-      critterIndex: new Number(0)
+      isBegin: false,
+      activeCritters: [],
+      inactiveCritters: []
     },
     mutations: {
-      CHANGE_CRITTERS(state, payload) {
-        state.critters = payload;
+      INIT(state) {
+        for (let critter of CritterData.CritterList) {
+          state.inactiveCritters.push(critter);
+        }
+        state.isBegin = true;
+        store.commit("TICK")
+      },
+      TICK(state) {
+        setTimeout( () => {
+          for (let critter of state.activeCritters) {
+            critter.tick();
+          }
+          store.commit("TICK")
+        }, 6000);        
       },
       ADD_CRITTER(state, payload) {
-        const index = new Number(state.critterIndex);
-        payload.critterId = index;
-        state.critterIndex++;
-        state.critters.push(payload);
+        state.inactiveCritters = state.inactiveCritters.filter((obj) => {
+          return obj.id != payload.id;
+        })
+        state.activeCritters.push(payload);
       },
       ADD_MO(state, payload) {
         state.critters.push(payload);
       },
-      TICK_CRITTERS(state) {
-        for (let critter of state.critters) {
-          critter.tick();
-        }
-      },
+      
       FEED_CRITTER(state, payload) {
-        let critter = state.critters.find((obj) => {
-          return obj.name == payload.name;
-        })
+        let critter = state.activeCritters.find((obj) => {
+          return obj.id == payload.id;
+        });
         CritterData.Feed(critter);
       }
     },
