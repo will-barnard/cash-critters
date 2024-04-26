@@ -6,7 +6,12 @@ export function createStore() {
     state: {
       isBegin: false,
       activeCritters: [],
-      inactiveCritters: []
+      inactiveCritters: [],
+      currency: {
+        food: 10,
+        love: 0,
+        money: 0,
+      }
     },
     mutations: {
       INIT(state) {
@@ -39,6 +44,17 @@ export function createStore() {
           return obj.id == payload.id;
         });
         CritterData.Feed(critter);
+        store.commit("UPDATE_FOOD", state.currency.food - 1);
+        store.commit("UPDATE_LOVE", state.currency.love + 1);
+      },
+      UPDATE_FOOD(state, payload) {
+        state.currency.food = payload;
+      },
+      UPDATE_LOVE(state, payload) {
+        state.currency.love = payload;
+      },
+      UPDATE_MONEY(state, payload) {
+        state.currency.money = payload;
       }
     },
   });

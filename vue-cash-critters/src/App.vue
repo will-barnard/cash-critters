@@ -6,7 +6,10 @@
       </nav>
     </div>
   </header>
-  <div>
+  <div class="currency" v-if="$store.state.isBegin">
+    <h3>Food: {{ $store.state.currency.food }}</h3>
+    <h3>Love: {{ $store.state.currency.love }}</h3>
+    <h3>Money: {{ $store.state.currency.money }}</h3>
   </div>
   <RouterView />
 </template>
@@ -51,6 +54,22 @@ nav a {
 nav a:first-of-type {
   border: 0;
 }
+
+.currency {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .currency h3 {
+    display: inline-block;
+    border: 1px solid;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+  }
+  .currency:hover {
+    cursor: default;
+  }
 
 @media (min-width: 1024px) {
   header {

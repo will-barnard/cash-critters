@@ -1,6 +1,8 @@
 <template>
   <div class="container">
-    <button v-on:click="begin()" v-if="!$store.state.isBegin">start the game</button>
+    <div class="spacer"></div>
+    <h1 class="button" @click="begin()" v-if="!$store.state.isBegin">start the game</h1>
+    <div class="spacer"></div>
   </div>
 </template>
 
@@ -29,5 +31,22 @@ export default {
 <style scoped>
   .container {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 80vh;
   }
+  .button {
+    border: 1px solid;
+    border-radius: 20px;
+    padding: 10px;
+  }
+  .button:hover {
+    cursor: pointer;
+  }
+  .spacer {
+    flex-grow: 1;
+  }
+  
 </style>

@@ -23,7 +23,7 @@
         <!-- v-for decoration and critter goes here, use css.grid? -->
       
       <div>
-        <button v-if="isActive" v-on:click="feed()">Feed</button>
+        <button v-if="isActive" :disabled="!$store.state.currency.food" v-on:click="feed()">Feed</button>
       </div>
       <div>
         <button v-if="isAdopt" v-on:click="adopt()">Adopt</button>
@@ -52,5 +52,12 @@ export default {
 </script>
 
 <style scoped>
-    
+  div {
+    text-align: center;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 </style>
