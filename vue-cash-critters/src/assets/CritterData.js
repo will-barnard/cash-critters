@@ -43,9 +43,19 @@ class Critter {
 
 export default {
     CritterList: [
-        new Critter("HungryHarry", "Hungry Harry", "HUNGRY_HARRY", 0, 6, 60, 100),
-        new Critter("MunchyMo", "Munchy Mo", "MUNCHY_MO", 1, 30, 70, 100),
-        new Critter("Dunder", "Dunder", "DUNDER", 2, 10 , 40, 100),    
+        new Critter(
+            "HungryHarry",
+            "Hungry Harry",
+            "HUNGRY_HARRY",
+            0, 6, 60, 100),
+        new Critter("MunchyMo",
+            "Munchy Mo",
+            "MUNCHY_MO",
+            1, 30, 70, 100),
+        new Critter("Dunder",
+            "Dunder",
+            "DUNDER",
+            2, 10 , 40, 100),    
         ],
     Feed(critter) {
         critter.avatar = critter.full;
