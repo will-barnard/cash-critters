@@ -1,28 +1,54 @@
 <template>
-  <header v-if="$store.state.isBegin">
-    <div class="wrapper">
-      <nav>
-        <RouterLink to="/critters">Critters</RouterLink>
-      </nav>
-    </div>
-  </header>
-  <div class="currency" v-if="$store.state.isBegin">
-    <h3>Food: {{ $store.state.currency.food }}</h3>
-    <h3>Love: {{ $store.state.currency.love }}</h3>
-    <h3>Money: {{ $store.state.currency.money }}</h3>
+  <div class="body-container">
+    <header v-if="$store.state.isBegin && $store.state.activeCritters.length > 0">
+      <div class="wrapper">
+        <nav>
+          <RouterLink to="/critters">Critters</RouterLink>
+        </nav>
+        <div class="currency" v-if="$store.state.isBegin && $store.state.activeCritters.length > 0">
+          <h3>Food: {{ $store.state.currency.food }}</h3>
+          <h3>Love: {{ $store.state.currency.love }}</h3>
+          <h3>Money: {{ $store.state.currency.money }}</h3>
+        </div>
+      </div>
+    </header>
+    
+    <RouterView />
   </div>
-  <RouterView />
 </template>
 
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 
 </script>
+<script>
+export default {
+  created() {
+    if (!this.$store.state.isBegin) {
+      this.$router.push({ name: 'home' })
+    }
+  }
+}
+</script>
 
 <style scoped>
+
+
+.body-container {
+  height: 100%;
+}
 header {
   line-height: 1.5;
-  max-height: 100vh;
+  height: 15vh;
+}
+
+.wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999; /* Ensure it is on top of everything */
+  background-color: var(--color-background); /* Apply standard background color */
 }
 
 .logo {
@@ -34,7 +60,8 @@ nav {
   width: 100%;
   font-size: 12px;
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 nav a.router-link-exact-active {
@@ -70,31 +97,4 @@ nav a:first-of-type {
   .currency:hover {
     cursor: default;
   }
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
 </style>

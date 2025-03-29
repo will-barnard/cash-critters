@@ -1,7 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import CritterView from '@/views/CritterView.vue';
-import CritterDetailView from '@/views/CritterDetailView.vue';
+import CritterDetailView from '@/views/CritterRoomView.vue';
+import AdoptView from '@/views/AdoptView.vue';
+import AboutView from '@/views/AboutView.vue'
+import HowToPlayView from '@/views/HowToPlayView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,10 +18,7 @@ const router = createRouter({
     {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
+      component: AboutView
     },
     {
       path: '/critters',
@@ -27,8 +27,18 @@ const router = createRouter({
     },
     {
       path: '/critters/:crittername',
-      name: 'critter-detail',
+      name: 'critter-room',
       component: CritterDetailView
+    },
+    {
+      path: '/adopt',
+      name: 'adopt',
+      component: AdoptView,
+    },
+    {
+      path: '/howtoplay',
+      name: 'howtoplay',
+      component: HowToPlayView
     }
   ]
 })

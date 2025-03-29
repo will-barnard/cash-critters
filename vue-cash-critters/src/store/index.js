@@ -27,7 +27,7 @@ export function createStore() {
             critter.tick();
           }
           store.commit("TICK")
-        }, 6000);        
+        }, 3000);        
       },
       ADD_CRITTER(state, payload) {
         state.inactiveCritters = state.inactiveCritters.filter((obj) => {

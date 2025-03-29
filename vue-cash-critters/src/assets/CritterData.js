@@ -1,5 +1,15 @@
 class Critter {
-    constructor(name, displayName, nameConst, id, becomeHungry, becomeStarving, becomeIrate) {
+    constructor(
+        name,
+        displayName,
+        nameConst,
+        id,
+        becomeHungry,
+        becomeStarving,
+        becomeIrate,
+        defaultRoom,
+        altRoom
+    ) {
 
         // id
         this.name = name;
@@ -22,6 +32,11 @@ class Critter {
         // stats
         this.hunger = 0;
         this.happiness = 100;
+
+        // rooms
+        this.defaultRoom = defaultRoom;
+        this.altRoom = altRoom;
+        this.currentRoom = defaultRoom;
     }
     tick() {
         this.hunger += 2;
@@ -47,7 +62,9 @@ export default {
             "HungryHarry",
             "Hungry Harry",
             "HUNGRY_HARRY",
-            0, 6, 60, 100),
+            0, 6, 60, 100,
+            "/img/rooms/HARRYS_PLAYROOM.png",
+            "/img/rooms/HARRYS_PLAYROOM_BADASS.png"),
         new Critter("MunchyMo",
             "Munchy Mo",
             "MUNCHY_MO",
