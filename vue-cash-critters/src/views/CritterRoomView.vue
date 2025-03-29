@@ -21,10 +21,4 @@ export default {
 </script>
 
 <style>
-.critter-room-container {
-    height: 85vh;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-}
 </style>

@@ -8,7 +8,8 @@ class Critter {
         becomeStarving,
         becomeIrate,
         defaultRoom,
-        altRoom
+        altRoom,
+        baseLoveMulti
     ) {
 
         // id
@@ -31,12 +32,23 @@ class Critter {
 
         // stats
         this.hunger = 0;
-        this.happiness = 100;
+        this.happiness = 0;
 
         // rooms
         this.defaultRoom = defaultRoom;
         this.altRoom = altRoom;
         this.currentRoom = defaultRoom;
+
+        // love
+        this.loveMulti = baseLoveMulti;
+        this.love = 0;
+
+        // toys
+        this.toys = [];
+
+        // furniture
+        this.furniture = [];
+
     }
     tick() {
         this.hunger += 2;
@@ -64,15 +76,26 @@ export default {
             "HUNGRY_HARRY",
             0, 6, 60, 100,
             "/img/rooms/HARRYS_PLAYROOM.png",
-            "/img/rooms/HARRYS_PLAYROOM_BADASS.png"),
+            "/img/rooms/HARRYS_PLAYROOM_BADASS.png",
+            1
+        ),
         new Critter("MunchyMo",
             "Munchy Mo",
             "MUNCHY_MO",
-            1, 30, 70, 100),
+            
+            1, 30, 70, 100,
+            "/img/rooms/MOS_PLAYROOM.png",
+            "/img/rooms/MOS_PLAYROOM_BADASS.png",
+            2
+        ),
         new Critter("Dunder",
             "Dunder",
             "DUNDER",
-            2, 10 , 40, 100),    
+            2, 10 , 40, 100,
+            "/img/rooms/DUNDERS_PLAYROOM.png",
+            "/img/rooms/DUNDERS_PLAYROOM_BADASS.png",
+            3
+        ),    
         ],
     Feed(critter) {
         critter.avatar = critter.full;

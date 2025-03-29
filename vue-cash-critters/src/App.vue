@@ -3,16 +3,17 @@
     <header v-if="$store.state.isBegin && $store.state.activeCritters.length > 0">
       <div class="wrapper">
         <nav>
-          <RouterLink to="/critters">Critters</RouterLink>
+          <h3>General Store</h3>
         </nav>
+        <div class="spacer"></div>
         <div class="currency" v-if="$store.state.isBegin && $store.state.activeCritters.length > 0">
-          <h3>Food: {{ $store.state.currency.food }}</h3>
-          <h3>Love: {{ $store.state.currency.love }}</h3>
-          <h3>Money: {{ $store.state.currency.money }}</h3>
+          <h3>Food:&nbsp;{{ $store.state.currency.food }}</h3>
+          <h3>Love:&nbsp;{{ $store.state.currency.love }}</h3>
+          <h3>Money:&nbsp;{{ $store.state.currency.money }}</h3>
         </div>
       </div>
     </header>
-    
+    <div class="adjust-spacer"></div>
     <RouterView />
   </div>
 </template>
@@ -32,59 +33,52 @@ export default {
 </script>
 
 <style scoped>
+  .adjust-spacer {
+    height: 2vh; /* Adjust this value to match the height of your header */
+  }
 
+  .body-container {
+    height: 100%;
+  }
+  header {
+    line-height: 1.5;
+    height: 13vh;
+  }
+  .spacer {
+    flex-grow: 1;
+  }
 
-.body-container {
-  height: 100%;
-}
-header {
-  line-height: 1.5;
-  height: 15vh;
-}
-
-.wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 9999; /* Ensure it is on top of everything */
-  background-color: var(--color-background); /* Apply standard background color */
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-.currency {
+  .wrapper {
+    position: absolute;
     display: flex;
-    flex-direction: row;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999; /* Ensure it is on top of everything */
+    background-color: var(--color-background); /* Apply standard background color */
+    font-size: .6em;
+  }
+
+  .logo {
+    display: block;
+    margin: 0 auto 2rem;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  nav h3 {
+    display: inline-block;
+    border: 1px solid;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+  }
+  .currency {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
   }
   .currency h3 {

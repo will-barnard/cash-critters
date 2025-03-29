@@ -38,14 +38,33 @@ export function createStore() {
       ADD_MO(state, payload) {
         state.critters.push(payload);
       },
-      
       FEED_CRITTER(state, payload) {
         let critter = state.activeCritters.find((obj) => {
           return obj.id == payload.id;
         });
+
+
+        let love = critter.loveMulti;
+        if (critter.hunger < critter.becomeStarving && critter.hunger >= critter.becomeHungry) {
+          love *= 4;
+        } else if (critter.hunger < critter.becomeIrate && critter.hunger >= critter.becomeStarving) {
+          love *= 2;
+        }
+        for (let toys of critter.toys) {
+          love += toys.loveMulti;
+        }
+        let furnitureMult = 1;
+        for (let furniture of critter.furniture) {
+          furnitureMult += furniture.loveMulti;
+        }
+        love *= furnitureMult;
+        critter.love += love;
         CritterData.Feed(critter);
         store.commit("UPDATE_FOOD", state.currency.food - 1);
-        store.commit("UPDATE_LOVE", state.currency.love + 1);
+      },
+      COLLECT_LOVE(state, payload) {
+        store.commit("UPDATE_LOVE", state.currency.love += payload.love);
+        payload.love = 0;
       },
       UPDATE_FOOD(state, payload) {
         state.currency.food = payload;
