@@ -35,9 +35,6 @@ export function createStore() {
         })
         state.activeCritters.push(payload);
       },
-      ADD_MO(state, payload) {
-        state.critters.push(payload);
-      },
       FEED_CRITTER(state, payload) {
         let critter = state.activeCritters.find((obj) => {
           return obj.id == payload.id;

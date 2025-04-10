@@ -3,7 +3,7 @@
     <header v-if="$store.state.isBegin && $store.state.activeCritters.length > 0">
       <div class="wrapper">
         <nav>
-          <h3>General Store</h3>
+          <h3 @click="$router.push({name: 'store'})">General Store</h3>
         </nav>
         <div class="spacer"></div>
         <div class="currency" v-if="$store.state.isBegin && $store.state.activeCritters.length > 0">
@@ -19,7 +19,7 @@
 </template>
 
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
 
 </script>
 <script>

@@ -7,9 +7,9 @@
     </div>
     <div class="top-spacer"></div>
     <h3 class="button" @click="begin()" v-if="!$store.state.isBegin">start the game</h3>
-    <div class="spacer"></div>
-    <p @click="$router.push({ name: 'about' })" class="about">About</p>
     <div class="top-spacer"></div>
+    <p @click="$router.push({ name: 'about' })" class="about">About</p>
+    <div class="spacer"></div>
   </div>
 </template>
 

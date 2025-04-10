@@ -5,6 +5,7 @@ import CritterDetailView from '@/views/CritterRoomView.vue';
 import AdoptView from '@/views/AdoptView.vue';
 import AboutView from '@/views/AboutView.vue'
 import HowToPlayView from '@/views/HowToPlayView.vue';
+import GeneralStoreView from '@/views/GeneralStoreView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -39,6 +40,11 @@ const router = createRouter({
       path: '/howtoplay',
       name: 'howtoplay',
       component: HowToPlayView
+    },
+    {
+      path: '/store',
+      name: 'store',
+      component: GeneralStoreView
     }
   ]
 })

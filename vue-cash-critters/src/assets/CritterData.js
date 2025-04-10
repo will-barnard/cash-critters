@@ -7,6 +7,7 @@ class Critter {
         becomeHungry,
         becomeStarving,
         becomeIrate,
+        escape,
         defaultRoom,
         altRoom,
         baseLoveMulti
@@ -29,6 +30,7 @@ class Critter {
         this.becomeHungry = becomeHungry;
         this.becomeStarving = becomeStarving;
         this.becomeIrate = becomeIrate;
+        this.escape = escape;
 
         // stats
         this.hunger = 0;
@@ -74,7 +76,8 @@ export default {
             "HungryHarry",
             "Hungry Harry",
             "HUNGRY_HARRY",
-            0, 6, 60, 100,
+            0,
+            6, 60, 100, null,
             "/img/rooms/HARRYS_PLAYROOM.png",
             "/img/rooms/HARRYS_PLAYROOM_BADASS.png",
             1
@@ -82,8 +85,8 @@ export default {
         new Critter("MunchyMo",
             "Munchy Mo",
             "MUNCHY_MO",
-            
-            1, 30, 70, 100,
+            1,
+            30, 70, 100, 140,
             "/img/rooms/MOS_PLAYROOM.png",
             "/img/rooms/MOS_PLAYROOM_BADASS.png",
             2
@@ -91,11 +94,48 @@ export default {
         new Critter("Dunder",
             "Dunder",
             "DUNDER",
-            2, 10 , 40, 100,
+            2,
+            10 , 40, 100, 140,
             "/img/rooms/DUNDERS_PLAYROOM.png",
             "/img/rooms/DUNDERS_PLAYROOM_BADASS.png",
             3
-        ),    
+        ),
+        new Critter("PeterEater", 
+            "Peter Eater",
+            "FLOWER",
+            3,
+            10, 40, 100, 110,
+            "/img/rooms/PETERS_PLAYROOM.png",
+            "/img/rooms/PETERS_PLAYROOM_BADASS.png",
+            3
+        ),
+        new Critter("BillyBites",
+            "Billy Bites",
+            "BILLY_BITES",
+            4,
+            60, 90, 130, 200,
+            "/img/rooms/BILLYS_PLAYROOM.png",
+            "/img/rooms/BILLYS_PLAYROOM_BADASS.png",
+            3
+        ),
+        new Critter("Shrimpleton", 
+            "Shrimpleton",
+            "SHRIMPLETON",
+            5,
+            10, 90, 150, 200,
+            "/img/rooms/SHRIMPLETONS_PLAYROOM.png",
+            "/img/rooms/SHRIMPLETONS_PLAYROOM_BADASS.png",
+            2
+        ),
+        new Critter("MoneyMike",
+            "Money Mike",
+            "MONEY_MIKE",
+            6,
+            100, 120, 160, 160,
+            "/img/rooms/MONEYS_PLAYROOM.png",
+            "/img/rooms/MONEYS_PLAYROOM_BADASS.png",
+            5
+        )
         ],
     Feed(critter) {
         critter.avatar = critter.full;
